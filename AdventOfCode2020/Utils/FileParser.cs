@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace AOC2020.Utils
+namespace AdventOfCode2020.Utils
 {
     public class FileParser
     {

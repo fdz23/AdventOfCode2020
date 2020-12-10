@@ -1,10 +1,10 @@
-﻿using AOC2020.Utils;
+﻿using AdventOfCode2020.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AOC2020.Solutions
+namespace AdventOfCode2020.Solutions
 {
     public class Day1
     {
