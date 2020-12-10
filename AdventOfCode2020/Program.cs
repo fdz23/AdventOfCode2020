@@ -8,6 +8,7 @@ namespace AOC2020
         static void Main(string[] args)
         {
             Console.WriteLine($"Day 1 Part 1 : {new Day1().Part1()}");
+            Console.WriteLine($"Day 1 Part 2 : {new Day1().Part2()}");
         }
     }
 }

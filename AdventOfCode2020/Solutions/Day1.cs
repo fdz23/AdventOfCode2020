@@ -8,20 +8,46 @@ namespace AOC2020.Solutions
     public class Day1
     {
         private readonly FileParser _fileParser = new FileParser();
+        private readonly List<int> _input;
+
+        public Day1()
+        {
+            _input = _fileParser.ParseFile($"Day1.txt");
+        }
 
         public int Part1()
         {
-            var input = _fileParser.ParseFile($"Day1.txt");
             var solution = 0;
 
-            foreach (var number in input)
+            foreach (var number in _input)
             {
                 solution = number;
-                var otherNumber = input.Find(n => n + number == 2020);
+                var otherNumber = _input.Find(n => n + number == 2020);
 
                 if (otherNumber != 0)
                 {
                     return solution * otherNumber;
+                }
+            }
+
+            return solution;
+        }
+        public int Part2()
+        {
+            var solution = 0;
+
+            foreach (var numberOne in _input)
+            {
+                foreach (var numberTwo in _input)
+                {
+                    solution = numberOne * numberTwo;
+
+                    var numberThree = _input.Find(n => n + numberOne + numberTwo == 2020);
+
+                    if (numberThree != 0)
+                    {
+                        return solution * numberThree;
+                    }
                 }
             }
 
