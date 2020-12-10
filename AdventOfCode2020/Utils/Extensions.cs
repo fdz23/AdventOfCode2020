@@ -25,5 +25,20 @@ namespace AdventOfCode2020.Utils
         {
             return number >= min && number <= max;
         }
+
+        public static string CharacterAt(this string msg, int index)
+        {
+            return msg.Substring(index, 1);
+        }
+
+        public static string ConcatTimes(this string msg, int times)
+        {
+            for (var i = 0; i < times; i++)
+            {
+                msg += msg;
+            }
+
+            return msg;
+        }
     }
 }
