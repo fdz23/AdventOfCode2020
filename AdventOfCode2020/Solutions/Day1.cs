@@ -1,6 +1,7 @@
 ﻿using AOC2020.Utils;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AOC2020.Solutions
@@ -12,7 +13,7 @@ namespace AOC2020.Solutions
 
         public Day1()
         {
-            _input = _fileParser.ParseFile($"Day1.txt");
+            _input = _fileParser.ParseFile($"Day1.txt").Select(line => Convert.ToInt32(line)).ToList();
         }
 
         public int Part1()
