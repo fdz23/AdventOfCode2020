@@ -16,7 +16,7 @@ namespace AdventOfCode2020.Solutions
             _input = _fileParser.ParseFile($"Day1.txt").Select(line => Convert.ToInt32(line)).ToList();
         }
 
-        public int Part1()
+        public long Part1()
         {
             var solution = 0;
 
@@ -33,7 +33,7 @@ namespace AdventOfCode2020.Solutions
 
             return solution;
         }
-        public int Part2()
+        public long Part2()
         {
             var solution = 0;
 

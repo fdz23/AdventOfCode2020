@@ -17,7 +17,7 @@ namespace AdventOfCode2020.Solutions
             _input = _fileParser.ParseFile($"Day2.txt");
         }
 
-        public int Part1()
+        public long Part1()
         {
             var amountOfValidPasswords = 0;
 
@@ -35,7 +35,7 @@ namespace AdventOfCode2020.Solutions
             return amountOfValidPasswords;
         }
 
-        public int Part2()
+        public long Part2()
         {
             var amountOfValidPasswords = 0;
 
