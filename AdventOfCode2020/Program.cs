@@ -7,12 +7,21 @@ namespace AdventOfCode2020
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Day 1 Part 1 : {new Day1().Part1()}");
-            Console.WriteLine($"Day 1 Part 2 : {new Day1().Part2()}");
-            Console.WriteLine($"Day 2 Part 1 : {new Day2().Part1()}");
-            Console.WriteLine($"Day 2 Part 2 : {new Day2().Part2()}");
-            Console.WriteLine($"Day 3 Part 1 : {new Day3().Part1()}");
-            Console.WriteLine($"Day 3 Part 2 : {new Day3().Part2()}");
+            ExecuteAndShowTime(new Day1().Part1, 1, 1);
+            ExecuteAndShowTime(new Day1().Part2, 1, 2);
+            ExecuteAndShowTime(new Day2().Part1, 2, 1);
+            ExecuteAndShowTime(new Day2().Part2, 2, 2);
+            ExecuteAndShowTime(new Day3().Part1, 3, 1);
+            ExecuteAndShowTime(new Day3().Part2, 3, 2);
+        }
+
+        public static void ExecuteAndShowTime(Func<long> function, int day, int part)
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var solution = function();
+            watch.Stop();
+            Console.WriteLine($"Day {day} Part {part}'s solution: {solution}");
+            Console.WriteLine($"Executed on {watch.ElapsedTicks / 100} ns\n");
         }
     }
 }
