@@ -7,12 +7,19 @@ namespace AdventOfCode2020
     {
         static void Main(string[] args)
         {
-            ExecuteAndShowTime(new Day1().Part1, 1, 1);
-            ExecuteAndShowTime(new Day1().Part2, 1, 2);
-            ExecuteAndShowTime(new Day2().Part1, 2, 1);
-            ExecuteAndShowTime(new Day2().Part2, 2, 2);
-            ExecuteAndShowTime(new Day3().Part1, 3, 1);
-            ExecuteAndShowTime(new Day3().Part2, 3, 2);
+            var day1 = new Day1();
+            var day2 = new Day2();
+            var day3 = new Day3();
+            var day4 = new Day4();
+
+            ExecuteAndShowTime(day1.Part1, 1, 1);
+            ExecuteAndShowTime(day1.Part2, 1, 2);
+            ExecuteAndShowTime(day2.Part1, 2, 1);
+            ExecuteAndShowTime(day2.Part2, 2, 2);
+            ExecuteAndShowTime(day3.Part1, 3, 1);
+            ExecuteAndShowTime(day3.Part2, 3, 2);
+            ExecuteAndShowTime(day4.Part1, 4, 1);
+            ExecuteAndShowTime(day4.Part2, 4, 2);
         }
 
         public static void ExecuteAndShowTime(Func<long> function, int day, int part)
@@ -21,7 +28,7 @@ namespace AdventOfCode2020
             var solution = function();
             watch.Stop();
             Console.WriteLine($"Day {day} Part {part}'s solution: {solution}");
-            Console.WriteLine($"Executed on {watch.ElapsedTicks / 100} ns\n");
+            Console.WriteLine($"Executed on {watch.ElapsedTicks * 100} ns\n");
         }
     }
 }
