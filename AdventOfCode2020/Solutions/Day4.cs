@@ -27,6 +27,92 @@ namespace AdventOfCode2020.Solutions
             return validPassports.Count();
         }
 
+        public long Part2()
+        {
+            var validPassports = _passports.Where(p => p.Fields.Count >= 7).ToList();
+            validPassports.RemoveAll(p => p.Fields.Count == 7 && p.Fields.ContainsKey("cid"));
+
+            return validPassports.Where(passport => FieldsAreValid(passport.Fields)).Count();
+        }
+
+        private bool FieldsAreValid(Dictionary<string, string> fields)
+        {
+            if (fields.TryGetValue("byr", out var birthYear))
+            {
+                if (!(birthYear.Length == 4 && Convert.ToInt32(birthYear).IsBetween(1920, 2002)))
+                {
+                    return false;
+                }
+            }
+
+            if (fields.TryGetValue("iyr", out var issueYear))
+            {
+                if (!(issueYear.Length == 4 && Convert.ToInt32(issueYear).IsBetween(2010, 2020)))
+                {
+                    return false;
+                }
+            }
+
+            if (fields.TryGetValue("eyr", out var expirationYear))
+            {
+                if (!(expirationYear.Length == 4 && Convert.ToInt32(expirationYear).IsBetween(2020, 2030)))
+                {
+                    return false;
+                }
+            }
+
+            if (fields.TryGetValue("hgt", out var height))
+            {
+                if (height.Contains("cm"))
+                {
+                    if (!Convert.ToInt32(height.Split("cm")[0]).IsBetween(150, 193))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (height.Contains("in"))
+                    {
+                        if (!Convert.ToInt32(height.Split("in")[0]).IsBetween(59, 76))
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (fields.TryGetValue("hcl", out var hairColor))
+            {
+                if (!Regex.IsMatch(hairColor, @"^#([0-9]|[a-f]){6}$"))
+                {
+                    return false;
+                }
+            }
+
+            if (fields.TryGetValue("ecl", out var eyeColor))
+            {
+                if (!Regex.IsMatch(eyeColor, @"^(amb|blu|brn|gry|grn|hzl|oth)$"))
+                {
+                    return false;
+                }
+            }
+
+            if (fields.TryGetValue("pid", out var passportId))
+            {
+                if (!Regex.IsMatch(passportId, @"^[0-9]{9}$"))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         private void ParsePassports()
         {
             var newInputs = new List<string>();
