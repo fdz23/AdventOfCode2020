@@ -33,6 +33,7 @@ namespace AdventOfCode2020.Solutions
 
             return solution;
         }
+
         public long Part2()
         {
             var solution = 0;
@@ -41,6 +42,11 @@ namespace AdventOfCode2020.Solutions
             {
                 foreach (var numberTwo in _input)
                 {
+                    if (numberOne + numberTwo >= 2020)
+                    {
+                        continue;
+                    }
+
                     solution = numberOne * numberTwo;
 
                     var numberThree = _input.Find(n => n + numberOne + numberTwo == 2020);
