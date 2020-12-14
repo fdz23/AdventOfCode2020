@@ -7,12 +7,12 @@ namespace AdventOfCode2020.Utils
 {
     public static class Extensions
     {
-        public static Day2Part1DTO ConvertDay2Part1DTO(this string line)
+        public static Card ConvertToCard(this string line)
         {
             var lineSplit = line.Split(" ");
             var numbers = lineSplit[0].Split("-");
 
-            return new Day2Part1DTO
+            return new Card
             {
                 Character = lineSplit[1].Split(":")[0],
                 Min = Convert.ToInt32(numbers[0]),

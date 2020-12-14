@@ -12,7 +12,7 @@ namespace AdventOfCode2020.Solutions
     {
         private readonly FileParser _fileParser = new FileParser();
         private readonly List<string> _input;
-        private readonly List<PassportDTO> _passports = new List<PassportDTO>();
+        private readonly List<Passport> _passports = new List<Passport>();
         public Day4()
         {
             _input = _fileParser.ParseFile("Day4.txt");
@@ -142,7 +142,7 @@ namespace AdventOfCode2020.Solutions
             foreach (var input in newInputs)
             {
                 var fields = input.Split(" ");
-                var passport = new PassportDTO();
+                var passport = new Passport();
                 passport.Fields = new Dictionary<string, string>();
 
                 foreach (var field in fields)

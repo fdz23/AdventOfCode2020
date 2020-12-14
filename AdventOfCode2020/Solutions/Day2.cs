@@ -23,7 +23,7 @@ namespace AdventOfCode2020.Solutions
 
             foreach (var line in _input)
             {
-                var dto = line.ConvertDay2Part1DTO();
+                var dto = line.ConvertToCard();
                 var matches = Regex.Matches(dto.Password, dto.Character);
 
                 if (matches.Count.IsBetween(dto.Min, dto.Max))
@@ -41,7 +41,7 @@ namespace AdventOfCode2020.Solutions
 
             foreach (var line in _input)
             {
-                var dto = line.ConvertDay2Part1DTO();
+                var dto = line.ConvertToCard();
                 var matches = Regex.Matches(dto.Password, dto.Character);
                 var match = matches.Where(match => match.Index == dto.Min - 1 || match.Index == dto.Max - 1);
 

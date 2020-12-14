@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AdventOfCode2020.DTOs
 {
-    public class PassportDTO
+    public class Passport
     {
         public Dictionary<string, string> Fields { get; set; }
 

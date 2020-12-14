@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AdventOfCode2020.DTOs
 {
-    public class Day2Part1DTO
+    public class Card
     {
         public int Min { get; set; }
         public int Max { get; set; }
