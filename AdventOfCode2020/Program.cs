@@ -22,6 +22,7 @@ namespace AdventOfCode2020
             ExecuteAndShowTime(day4.Part1, 4, 1);
             ExecuteAndShowTime(day4.Part2, 4, 2);
             ExecuteAndShowTime(day5.Part1, 5, 1);
+            ExecuteAndShowTime(day5.Part2, 5, 2);
         }
 
         public static void ExecuteAndShowTime(Func<long> function, int day, int part)
