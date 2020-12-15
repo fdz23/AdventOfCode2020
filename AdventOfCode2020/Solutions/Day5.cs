@@ -13,6 +13,7 @@ namespace AdventOfCode2020.Solutions
         private readonly FileParser _fileParser = new FileParser();
         private readonly List<string> _input;
         private readonly List<Seat> _seats;
+        private Seat _mySeat;
 
         public Day5()
         {
@@ -40,7 +41,18 @@ namespace AdventOfCode2020.Solutions
                 }
             }
 
+            _mySeat = maxSeatId;
             return maxSeatId.Id;
+        }
+
+        public long Part2()
+        {
+            var seat = _seats
+                .OrderBy(s => s.Id)
+                .FirstOrDefault(seat => _seats.FirstOrDefault(s => s.Id == seat.Id + 1) == null
+                            && _seats.FirstOrDefault(s => s.Id == seat.Id + 2) != null);
+
+            return seat.Id + 1;
         }
     }
 }
