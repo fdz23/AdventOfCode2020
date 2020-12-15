@@ -1,4 +1,5 @@
-﻿using AdventOfCode2020.Utils;
+﻿using AdventOfCode2020.Data;
+using AdventOfCode2020.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,56 +10,65 @@ namespace AdventOfCode2020.Solutions
     public class Day6
     {
         private readonly FileParser _fileParser = new FileParser();
-        private List<string> _input;
+        private readonly List<string> _input;
+        private List<Group> _groups;
 
         public Day6()
         {
             _input = _fileParser.ParseFile("Day6.txt");
-            ParseInput();
+            _groups = CreateGroups();
         }
 
         public long Part1()
         {
-            long sumOfAnswers = 0;
+            long sum = 0;
 
-            foreach (var input in _input)
+            _groups.ForEach(g =>
             {
-                var letters = new Dictionary<string, bool>();
+                var allAnswers = new List<Answer>();
 
-                for (int i = 0; i < input.Length; i++)
+                g.Persons.ForEach(p =>
                 {
-                    var character = input.CharacterAt(i);
+                    allAnswers.AddRange(p.Answers);
+                });
 
-                    if (!letters.ContainsKey(character))
-                    {
-                        letters.Add(character, true);
-                    }
-                }
+                sum += allAnswers.Select(a => a.Character).Distinct().Count();
+            });
 
-                sumOfAnswers += letters.Count;
-            }
-
-            return sumOfAnswers;
+            return sum;
         }
 
-        private void ParseInput() 
+        private List<Group> CreateGroups()
         {
-            var newInput = new List<string>();
-            newInput.Add("");
+            var groups = new List<Group>();
+            var persons = new List<Person>();
 
             foreach (var input in _input)
             {
                 if (input.Equals(""))
                 {
-                    newInput.Add("");
+                    var personsToAdd = new List<Person>();
+                    personsToAdd.AddRange(persons);
+
+                    groups.Add(new Group() { Persons = personsToAdd });
+                    persons.Clear();
                 }
                 else
                 {
-                    newInput[^1] += input;
+                    var answers = new List<Answer>();
+
+                    for (int i = 0; i < input.Length; i++)
+                    {
+                        answers.Add(new Answer { Character = input.CharacterAt(i) });
+                    }
+
+                    persons.Add(new Person { Answers = answers });
                 }
             }
 
-            _input = newInput;
+            groups.Add(new Group() { Persons = persons });
+
+            return groups;
         }
     }
 }
