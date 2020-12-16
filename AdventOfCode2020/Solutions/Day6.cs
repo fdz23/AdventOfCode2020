@@ -38,6 +38,34 @@ namespace AdventOfCode2020.Solutions
             return sum;
         }
 
+        public long Part2()
+        {
+            long sum = 0;
+
+            _groups.ForEach(g =>
+            {
+                var allCharacters = new List<string>();
+
+                g.Persons.ForEach(p =>
+                {
+                    p.Answers.ForEach(a =>
+                    {
+                        if (g.Persons.All(person => person.Answers.Select(answer => answer.Character).Contains(a.Character)))
+                        {
+                            if (!allCharacters.Contains(a.Character))
+                            {
+                                allCharacters.Add(a.Character);
+                            }
+                        }
+                    });
+                });
+
+                sum += allCharacters.Count();
+            });
+
+            return sum;
+        }
+
         private List<Group> CreateGroups()
         {
             var groups = new List<Group>();
