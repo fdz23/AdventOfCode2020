@@ -14,6 +14,7 @@ namespace AdventOfCode2020
             var day5 = new Day5();
             var day6 = new Day6();
             var day7 = new Day7();
+            var day8 = new Day8();
 
             ExecuteAndShowTime(day1.Part1, 1, 1);
             ExecuteAndShowTime(day1.Part2, 1, 2);
@@ -29,6 +30,7 @@ namespace AdventOfCode2020
             ExecuteAndShowTime(day6.Part2, 6, 2);
             ExecuteAndShowTime(day7.Part1, 7, 1);
             ExecuteAndShowTime(day7.Part2, 7, 2);
+            ExecuteAndShowTime(day8.Part1, 8, 1);
         }
 
         public static void ExecuteAndShowTime(Func<long> function, int day, int part)
