@@ -1,4 +1,5 @@
-﻿using AdventOfCode2020.DTOs;
+﻿using AdventOfCode2020.Data;
+using AdventOfCode2020.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,15 @@ namespace AdventOfCode2020.Utils
         public static bool IsBetween(this int number, int min, int max)
         {
             return number >= min && number <= max;
+        }
+
+        public static int? ToInt(this string number)
+        {
+            if (int.TryParse(number, out var num)) {
+                return num;
+            }
+
+            return null;
         }
 
         public static string CharacterAt(this string msg, int index)
