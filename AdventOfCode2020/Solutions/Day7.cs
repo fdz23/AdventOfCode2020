@@ -83,7 +83,7 @@ namespace AdventOfCode2020.Solutions
             {
                 foreach (var bag in obj.Bags.Keys)
                 {
-                    if (GetBagCount(bag, colorToFind) > 0)
+                    if (GetSingleBagCount(bag, colorToFind) > 0)
                     {
                         return 1;
                     }
