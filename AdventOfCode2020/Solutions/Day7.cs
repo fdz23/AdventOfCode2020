@@ -31,6 +31,13 @@ namespace AdventOfCode2020.Solutions
             return bagCount;
         }
 
+        public long Part2()
+        {
+            var bag = _bags.FirstOrDefault(b => b.Color.Equals("shiny gold"));
+            
+            return GetBagCount(bag, "shiny gold") - 1;
+        }
+
         private void CreateBags()
         {
             CreateBagsWithoutReference();
@@ -88,6 +95,19 @@ namespace AdventOfCode2020.Solutions
                         return 1;
                     }
                 }
+            }
+
+            return bagCount;
+        }
+
+        private long GetBagCount(Bag obj, string colorToFind)
+        {
+            long bagCount = 0;
+            bagCount++;
+
+            foreach (var bag in obj.Bags)
+            {
+                bagCount += GetBagCount(bag.Key, colorToFind) * bag.Value;
             }
 
             return bagCount;
